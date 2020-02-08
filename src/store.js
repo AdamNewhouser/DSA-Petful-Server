@@ -1,232 +1,228 @@
-const Queue = require("./queue");
-
-const catsArr = [
-  {
-    id: 1,
-    name: "Helena",
-    image: "http://dummyimage.com/215x249.png/dddddd/000000",
-    breed: "Fox, blue",
-    sex: "F",
-    age: 1
-  },
-  {
-    id: 2,
-    name: "Leopold",
-    image: "http://dummyimage.com/182x161.png/ff4444/ffffff",
-    breed: "Fairy penguin",
-    sex: "M",
-    age: 2
-  },
-  {
-    id: 3,
-    name: "Ag",
-    image: "http://dummyimage.com/225x198.png/5fa2dd/ffffff",
-    breed: "Macaque, bonnet",
-    sex: "F",
-    age: 3
-  },
-  {
-    id: 4,
-    name: "Vincents",
-    image: "http://dummyimage.com/227x206.png/5fa2dd/ffffff",
-    breed: "Four-spotted skimmer",
-    sex: "M",
-    age: 4
-  },
-  {
-    id: 5,
-    name: "Field",
-    image: "http://dummyimage.com/157x230.png/dddddd/000000",
-    breed: "Wild water buffalo",
-    sex: "M",
-    age: 5
-  },
-  {
-    id: 6,
-    name: "Gillie",
-    image: "http://dummyimage.com/175x110.bmp/dddddd/000000",
-    breed: "Golden jackal",
-    sex: "F",
-    age: 6
-  },
-  {
-    id: 7,
-    name: "Bertrando",
-    image: "http://dummyimage.com/132x183.png/cc0000/ffffff",
-    breed: "Sloth, two-toed tree",
-    sex: "M",
-    age: 7
-  },
-  {
-    id: 8,
-    name: "Giffy",
-    image: "http://dummyimage.com/199x214.bmp/cc0000/ffffff",
-    breed: "Red-breasted cockatoo",
-    sex: "M",
-    age: 8
-  },
-  {
-    id: 9,
-    name: "Peirce",
-    image: "http://dummyimage.com/222x122.bmp/ff4444/ffffff",
-    breed: "Bat, little brown",
-    sex: "M",
-    age: 9
-  },
-  {
-    id: 10,
-    name: "Bryanty",
-    image: "http://dummyimage.com/191x192.jpg/dddddd/000000",
-    breed: "Cobra (unidentified)",
-    sex: "M",
-    age: 10
-  }
-];
-
-const dogsArr = [
-  {
-    id: 1,
-    name: "Helena",
-    image: "http://dummyimage.com/215x249.png/dddddd/000000",
-    breed: "Fox, blue",
-    sex: "F",
-    age: 1
-  },
-  {
-    id: 2,
-    name: "Leopold",
-    image: "http://dummyimage.com/182x161.png/ff4444/ffffff",
-    breed: "Fairy penguin",
-    sex: "M",
-    age: 2
-  },
-  {
-    id: 3,
-    name: "Ag",
-    image: "http://dummyimage.com/225x198.png/5fa2dd/ffffff",
-    breed: "Macaque, bonnet",
-    sex: "F",
-    age: 3
-  },
-  {
-    id: 4,
-    name: "Vincents",
-    image: "http://dummyimage.com/227x206.png/5fa2dd/ffffff",
-    breed: "Four-spotted skimmer",
-    sex: "M",
-    age: 4
-  },
-  {
-    id: 5,
-    name: "Field",
-    image: "http://dummyimage.com/157x230.png/dddddd/000000",
-    breed: "Wild water buffalo",
-    sex: "M",
-    age: 5
-  },
-  {
-    id: 6,
-    name: "Gillie",
-    image: "http://dummyimage.com/175x110.bmp/dddddd/000000",
-    breed: "Golden jackal",
-    sex: "F",
-    age: 6
-  },
-  {
-    id: 7,
-    name: "Bertrando",
-    image: "http://dummyimage.com/132x183.png/cc0000/ffffff",
-    breed: "Sloth, two-toed tree",
-    sex: "M",
-    age: 7
-  },
-  {
-    id: 8,
-    name: "Giffy",
-    image: "http://dummyimage.com/199x214.bmp/cc0000/ffffff",
-    breed: "Red-breasted cockatoo",
-    sex: "M",
-    age: 8
-  },
-  {
-    id: 9,
-    name: "Peirce",
-    image: "http://dummyimage.com/222x122.bmp/ff4444/ffffff",
-    breed: "Bat, little brown",
-    sex: "M",
-    age: 9
-  },
-  {
-    id: 10,
-    name: "Bryanty",
-    image: "http://dummyimage.com/191x192.jpg/dddddd/000000",
-    breed: "Cobra (unidentified)",
-    sex: "M",
-    age: 10
-  }
-];
-const usersArr = [
-  {
-    id: 1,
-    name: "Alicia",
-    image: "http://dummyimage.com/115x182.png/5fa2dd/ffffff"
-  },
-  {
-    id: 2,
-    name: "Pieter",
-    image: "http://dummyimage.com/237x177.png/dddddd/000000"
-  },
-  {
-    id: 3,
-    name: "Hestia",
-    image: "http://dummyimage.com/155x148.png/5fa2dd/ffffff"
-  },
-  {
-    id: 4,
-    name: "Randa",
-    image: "http://dummyimage.com/109x152.bmp/cc0000/ffffff"
-  },
-  {
-    id: 5,
-    name: "Roderich",
-    image: "http://dummyimage.com/147x145.bmp/dddddd/000000"
-  },
-  {
-    id: 6,
-    name: "Gabie",
-    image: "http://dummyimage.com/114x222.png/cc0000/ffffff"
-  },
-  {
-    id: 7,
-    name: "Bobina",
-    image: "http://dummyimage.com/250x120.jpg/5fa2dd/ffffff"
-  },
-  {
-    id: 8,
-    name: "Davin",
-    image: "http://dummyimage.com/140x172.png/5fa2dd/ffffff"
-  },
-  {
-    id: 9,
-    name: "Jaquelin",
-    image: "http://dummyimage.com/171x203.png/cc0000/ffffff"
-  },
-  {
-    id: 10,
-    name: "Jacob",
-    image: "http://dummyimage.com/120x180.png/5fa2dd/ffffff"
-  }
-];
-
-const cats = new Queue();
-catsArr.map(i => cats.enqueue(i));
-const dogs = new Queue();
-dogsArr.map(i => dogs.enqueue(i));
-const users = new Queue();
-usersArr.map(i => users.enqueue(i));
-
-module.exports = {
-  cats,
-  dogs,
-  users
+let STORE = {
+  dogs: [
+    {
+      imageURL: 'https://images.pexels.com/photos/33053/dog-young-dog-small-dog-maltese.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      imageDescription: 'A smiling golden-brown golden retreiver listening to music.',
+      name: 'Zim',
+      sex: 'Male',
+      age: 3,
+      breed: 'Golden Retriever',
+      story: 'Owner Passed away'
+    },
+    {
+      imageURL: 'https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      imageDescription: 'A smiling golden-brown dog',
+      name: 'Fran',
+      sex: 'Female',
+      age: 3,
+      breed: 'Akita',
+      story: 'Found downtown'
+    },
+    {
+      imageURL: 'https://images.pexels.com/photos/160846/french-bulldog-summer-smile-joy-160846.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      imageDescription: 'Black pug.',
+      name: 'Bilbo',
+      sex: 'Male',
+      age: 3,
+      breed: 'Pug',
+      story: 'Owner Passed away'
+    },
+    {
+      imageURL: 'https://images.pexels.com/photos/733416/pexels-photo-733416.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      imageDescription: 'Border collie.',
+      name: 'Philip',
+      sex: 'Male',
+      age: 3,
+      breed: 'Collie',
+      story: 'Owner Passed away'
+    },
+    {
+      imageURL: 'https://images.pexels.com/photos/374906/pexels-photo-374906.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      imageDescription: 'pug.',
+      name: 'Doogie',
+      sex: 'Male',
+      age: 3,
+      breed: 'Pug',
+      story: 'Owner Passed away'
+    },
+    {
+      imageURL: 'https://images.pexels.com/photos/662417/pexels-photo-662417.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      imageDescription: 'A smiling golden-brown golden retreiver listening to music.',
+      name: 'Zeke',
+      sex: 'Male',
+      age: 3,
+      breed: 'Golden Retriever',
+      story: 'Owner Passed away'
+    },
+    {
+      imageURL: 'https://images.pexels.com/photos/1490908/pexels-photo-1490908.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+      imageDescription: 'A smiling golden-brown golden retreiver listening to music.',
+      name: 'Sam',
+      sex: 'Male',
+      age: 3,
+      breed: 'Golden Retriever',
+      story: 'Owner Passed away'
+    },
+    {
+      imageURL: 'https://images.pexels.com/photos/1322182/pexels-photo-1322182.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+      imageDescription: 'Australian sheppard',
+      name: 'Smelly',
+      sex: 'Female',
+      age: 3,
+      breed: 'Fluffy Dog',
+      story: 'Owner Passed away'
+    },
+    {
+      imageURL: 'https://images.pexels.com/photos/257540/pexels-photo-257540.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      imageDescription: 'terrier',
+      name: 'Tiny',
+      sex: 'Male',
+      age: 3,
+      breed: 'Terrier',
+      story: 'Found downtown'
+    },
+    {
+      imageURL: 'https://images.pexels.com/photos/92380/pexels-photo-92380.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500',
+      imageDescription: 'A smiling golden-brown golden retreiver',
+      name: 'Tom',
+      sex: 'Male',
+      age: 3,
+      breed: 'Golden Retriever',
+      story: 'Owner surrrendered dog'
+    },
+    {
+      imageURL: 'https://images.pexels.com/photos/1629781/pexels-photo-1629781.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      imageDescription: 'boxer dog',
+      name: 'Tim',
+      sex: 'Male',
+      age: 3,
+      breed: 'Boxer',
+      story: 'Found in neighborhood'
+    }
+  ],
+  cats: [
+    {
+      imageURL:'https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 
+      imageDescription: 'Orange bengal cat with black stripes lounging on concrete.',
+      name: 'Steve French',
+      sex: 'Female',
+      age: 2,
+      breed: 'Bengal',
+      story: 'Thrown on the street'
+    },
+    {
+      imageURL:'https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 
+      imageDescription: 'White cat',
+      name: 'Snapjacks',
+      sex: 'Female',
+      age: 2,
+      breed: 'white cat',
+      story: 'Thrown on the street'
+    },
+    {
+      imageURL:'https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 
+      imageDescription: 'Grey cat',
+      name: 'Grumpy-Face',
+      sex: 'Female',
+      age: 2,
+      breed: 'Bengal',
+      story: 'Thrown on the street'
+    },
+    {
+      imageURL:'https://images.pexels.com/photos/57416/cat-sweet-kitty-animals-57416.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 
+      imageDescription: 'Orange cat',
+      name: 'Garry Lazereyes',
+      sex: 'Female',
+      age: 2,
+      breed: 'Bengal',
+      story: 'Thrown on the street'
+    },
+    {
+      imageURL:'https://images.pexels.com/photos/126407/pexels-photo-126407.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 
+      imageDescription: 'Grey cat',
+      name: 'Neapolitan Charlie',
+      sex: 'Male',
+      age: 2,
+      breed: 'Bengal',
+      story: 'Thrown on the street'
+    },
+    {
+      imageURL:'https://images.pexels.com/photos/774731/pexels-photo-774731.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 
+      imageDescription: 'Orange bengal cat with black stripes lounging on concrete.',
+      name: 'Daisy',
+      sex: 'Female',
+      age: 2,
+      breed: 'Tabby',
+      story: 'Thrown on the street'
+    },
+    {
+      imageURL:'https://images.pexels.com/photos/1543793/pexels-photo-1543793.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 
+      imageDescription: 'Brown kitty',
+      name: 'Stinkster',
+      sex: 'Female',
+      age: 2,
+      breed: 'Bengal',
+      story: 'Thrown on the street'
+    },
+    {
+      imageURL:'https://images.pexels.com/photos/1276553/pexels-photo-1276553.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 
+      imageDescription: 'kitty',
+      name: 'Ner-Ner',
+      sex: 'Female',
+      age: 2,
+      breed: 'Bengal',
+      story: 'Thrown on the street'
+    },
+    {
+      imageURL:'https://images.pexels.com/photos/54632/cat-animal-eyes-grey-54632.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500', 
+      imageDescription: 'grey cat',
+      name: 'Furrnando Valenzuela',
+      sex: 'Male',
+      age: 2,
+      breed: 'Tabby',
+      story: 'Thrown on the street'
+    },
+    {
+      imageURL:'https://images.pexels.com/photos/923360/pexels-photo-923360.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500', 
+      imageDescription: 'grey cat',
+      name: 'Spike',
+      sex: 'Male',
+      age: 2,
+      breed: 'Tabby',
+      story: 'Thrown on the street'
+    },
+    {
+      imageURL: 'https://images.pexels.com/photos/1472999/pexels-photo-1472999.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+      imageDescription: 'boxer dog',
+      name: 'Vince the Pince',
+      sex: 'Male',
+      age: 3,
+      breed: 'Tabby',
+      story: 'Found in neighborhood'
+    }
+  ],
+  users: [
+    'Randy Lahey',
+    'Trevor Cory',
+    'Jim Lahey',
+    'Barb Lahey',
+    'Randy Bobandy',
+    'Cory Trevor',
+    'Cory Trevorson',
+    'Leslie Dancer',
+    'Treena Lahey',
+    'Sam Losco',
+    'Ricky LaFleur',
+    'George Green',
+  ],
+  success: [
+    {
+      animalName:'Sgt. Meowenstein',
+      imageURL:'https://cdn.pixabay.com/photo/2017/05/31/16/24/cat-2360863_960_720.jpg',
+      imageDescription: 'little kitten',
+      humanName:'Bubbles'
+    }
+  ]
 };
+
+module.exports = STORE;
