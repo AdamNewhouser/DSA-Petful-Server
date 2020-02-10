@@ -18,7 +18,9 @@ const morganOption = (NODE_ENV === 'production')
 
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: CLIENT_ORIGIN
+}));
 app.use(morgan(morganOption));
 
 app.use('/api/dogs', dogRouter);
