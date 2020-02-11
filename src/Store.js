@@ -189,7 +189,7 @@ let STORE = {
       sex: 'Male',
       age: 2,
       breed: 'Tabby',
-      story: 'Thrown on the street'
+      story: 'Thrown on the street',
     },
     {
       imageURL: 'https://images.pexels.com/photos/1472999/pexels-photo-1472999.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
