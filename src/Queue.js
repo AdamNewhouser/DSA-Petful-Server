@@ -23,7 +23,7 @@ class Queue {
       this.last.next = node;
     }
 
-    this.last = node;
+    this.last = node
   }
 
   dequeue() {
