@@ -16,7 +16,7 @@ function autoQueue() {
     dogQueue = new Queue();
   }
 
-  if(userQueue.length <= 10) {
+  if(userQueue.length <= 2) {
     let userIndex = Math.floor(Math.random() * Math.floor(STORE.users.length - 1));
     userQueue.enqueue(STORE.users[userIndex]);
   }

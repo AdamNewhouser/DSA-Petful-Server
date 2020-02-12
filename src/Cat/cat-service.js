@@ -3,6 +3,7 @@ const STORE = require('../Store');
 
 const catService = {
   deleteCat(){
+    console.log(queues.userQueue.dequeue())
     let humanName = queues.userQueue.dequeue();
     let cat = queues.catQueue.dequeue();
     let animalName = cat.name;
